@@ -193,6 +193,25 @@ public class DeliveryCardTest {
     }
 
     @Test
+    void NegativeValidationFieldNameBlank() {
+        open("http://localhost:9999/");
+
+
+        $("[data-test-id='city'] .input__control").sendKeys("Калининград");
+        SelenideElement element = $("[data-test-id='date'] .input__control");
+        String value = $("[data-test-id='date'] .input__control").getValue();
+        for (int i = 0; i < value.length(); i++) {
+            element.sendKeys(Keys.BACK_SPACE);
+
+        }
+        String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        $("[data-test-id='date'] .input__control").sendKeys(date);
+        $("[data-test-id='name'] .input__control").sendKeys("");
+        $(".button").click();
+        $(byText("Поле обязательно для заполнения")).shouldBe(Condition.visible);
+    }
+
+    @Test
     void negativeValidationFieldPhoneWith10Digits() {
         open("http://localhost:9999/");
 
@@ -253,7 +272,27 @@ public class DeliveryCardTest {
     }
 
     @Test
-    void negativeValidationFieldPhoneWithOutAgreement() {
+    void negativeValidationFieldPhoneBlank() {
+        open("http://localhost:9999/");
+
+
+        $("[data-test-id='city'] .input__control").sendKeys("Калининград");
+        SelenideElement element = $("[data-test-id='date'] .input__control");
+        String value = $("[data-test-id='date'] .input__control").getValue();
+        for (int i = 0; i < value.length(); i++) {
+            element.sendKeys(Keys.BACK_SPACE);
+
+        }
+        String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        $("[data-test-id='date'] .input__control").sendKeys(date);
+        $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
+        $("[data-test-id='phone'] .input__control").sendKeys("");
+        $(".button").click();
+        $(byText("Поле обязательно для заполнения")).shouldBe(Condition.visible);
+    }
+
+    @Test
+    void negativeValidationWithOutAgreement() {
         open("http://localhost:9999/");
 
 
