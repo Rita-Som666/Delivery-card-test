@@ -1,9 +1,9 @@
 package ru.netology.test;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selectors;
+
 import com.codeborne.selenide.SelenideElement;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -11,14 +11,13 @@ import org.openqa.selenium.Keys;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
-import static com.codeborne.selenide.Selectors.byAttribute;
-import static com.codeborne.selenide.Selectors.byText;
+
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class DeliveryCardTest {
-    private String generateDate(long addDays, String pattern){
+    private String generateDate(long addDays, String pattern) {
         return LocalDate.now().plusDays(addDays).format(DateTimeFormatter.ofPattern(pattern));
     }
 
@@ -349,22 +348,24 @@ public class DeliveryCardTest {
         $("[data-test-id='date'] .input__control").click();
 
 
+        if (!generateDate(3, "MM").equals(generateDate(7, "MM"))) {
+            $(".calendar__arrow_direction_right [data-step='1']").click();
 
-       if (!generateDate(3,"MM").equals(generateDate(7, "MM"))){
-           $(".calendar__arrow_direction_right [data-step='1']").click();
-
-       } else {
-           List <SelenideElement> days = $$(".calendar__day");
-          days.
-       }
+        } else {
 
 
+            String nested = $(".calendar__day_state_current").text();
+            int nested1 = Integer.parseInt(nested) + 4;
+            String nested2 = String.valueOf(nested1);
+            $(byText(nested2)).click();
 
 
-        $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
-        $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
-        $("[data-test-id='agreement']").click();
-        $(".button").click();
-        $("[data-test-id='notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+            $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
+            $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
+            $("[data-test-id='agreement']").click();
+            $(".button").click();
+            $("[data-test-id='notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+        }
+
     }
 }
