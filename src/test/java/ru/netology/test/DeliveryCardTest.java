@@ -28,18 +28,14 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
         $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
         $("[data-test-id='agreement']").click();
         $(".button").click();
-        $("[data-test-id='notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $(byCssSelector("[data-test-id='notification'] .notification__content")).shouldBe(Condition.visible, Duration.ofSeconds(15)).shouldHave(Condition.text(date));
     }
 
     @Test
@@ -49,18 +45,14 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(4).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
         $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
         $("[data-test-id='agreement']").click();
         $(".button").click();
-        $("[data-test-id='notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $(byCssSelector("[data-test-id='notification'] .notification__content")).shouldBe(Condition.visible, Duration.ofSeconds(15)).shouldHave(Condition.text(date));
     }
 
     @Test
@@ -69,19 +61,14 @@ public class DeliveryCardTest {
 
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
-        SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван");
         $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
         $("[data-test-id='agreement']").click();
         $(".button").click();
-        $("[data-test-id='notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $(byCssSelector("[data-test-id='notification'] .notification__content")).shouldBe(Condition.visible, Duration.ofSeconds(15)).shouldHave(Condition.text(date));
     }
 
     @Test
@@ -91,18 +78,14 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван-Иванов");
         $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
         $("[data-test-id='agreement']").click();
         $(".button").click();
-        $("[data-test-id='notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $(byCssSelector("[data-test-id='notification'] .notification__content")).shouldBe(Condition.visible, Duration.ofSeconds(15)).shouldHave(Condition.text(date));
     }
 
     @Test
@@ -123,11 +106,7 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(2).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $(".button").click();
@@ -143,11 +122,7 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван.Иванов");
@@ -163,11 +138,7 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иваn Иванов");
@@ -183,11 +154,7 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов1");
@@ -202,11 +169,7 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("");
@@ -222,10 +185,7 @@ public class DeliveryCardTest {
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
         String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
@@ -241,11 +201,7 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
@@ -261,11 +217,7 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
@@ -280,12 +232,7 @@ public class DeliveryCardTest {
 
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
-        SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
@@ -300,12 +247,7 @@ public class DeliveryCardTest {
 
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
-        SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
@@ -321,21 +263,16 @@ public class DeliveryCardTest {
 
 
         $("[data-test-id='city'] .input__control").sendKeys("Ек");
-        $(By.cssSelector(".menu_mode_radio-check > div:nth-child(4)")).hover().click();
+        $(byText("Екатеринбург")).hover().click();
 
-        SelenideElement element = $("[data-test-id='date'] .input__control");
-        String value = $("[data-test-id='date'] .input__control").getValue();
-        for (int i = 0; i < value.length(); i++) {
-            element.sendKeys(Keys.BACK_SPACE);
-
-        }
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[data-test-id='date'] .input__control").sendKeys(date);
         $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
         $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
         $("[data-test-id='agreement']").click();
         $(".button").click();
-        $("[data-test-id='notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $(byCssSelector("[data-test-id='notification'] .notification__content")).shouldBe(Condition.visible, Duration.ofSeconds(15)).shouldHave(Condition.text(date));
     }
 
     @Test
@@ -364,7 +301,7 @@ public class DeliveryCardTest {
             $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
             $("[data-test-id='agreement']").click();
             $(".button").click();
-            $("[data-test-id='notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+            $(byCssSelector("[data-test-id='notification'] .notification__content")).shouldBe(Condition.visible, Duration.ofSeconds(15)).shouldHave(Condition.text(nested2));
         }
 
     }
