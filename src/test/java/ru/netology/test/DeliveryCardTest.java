@@ -288,12 +288,23 @@ public class DeliveryCardTest {
         LocalDate futureDate = currentDate.plusDays(7);
         int currentMonth = currentDate.getMonthValue();
         int futureMonth = futureDate.getMonthValue();
+        String futureDay = String.valueOf(futureDate.getDayOfMonth());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String futureDateS = futureDate.format(formatter);
 
 
         if (currentMonth != futureMonth) {
-            $(".calendar__arrow_direction_right [data-step='1']").click();
-            String text = String.valueOf(futureDate.getDayOfMonth());
-            $(".calendar__day").shouldHave(Condition.attribute(text));
+            $(".calendar__arrow_direction_right[data-step='1']").click();
+
+
+            var days = $$(".calendar__day");
+            days.find(Condition.text(futureDay)).click();
+            $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
+            $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
+            $("[data-test-id='agreement']").click();
+            $(".button").click();
+            $(byCssSelector("[data-test-id='notification'] .notification__content")).shouldBe(Condition.visible, Duration.ofSeconds(15)).shouldHave(Condition.text(futureDateS));
+
 
         } else {
 
@@ -302,7 +313,6 @@ public class DeliveryCardTest {
             int nested1 = Integer.parseInt(nested) + 7;
             String nested2 = String.valueOf(nested1);
             $(byText(nested2)).click();
-
 
             $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
             $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
