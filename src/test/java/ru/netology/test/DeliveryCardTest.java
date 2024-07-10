@@ -284,15 +284,22 @@ public class DeliveryCardTest {
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         $("[data-test-id='date'] .input__control").click();
 
+        LocalDate currentDate = LocalDate.now();
+        LocalDate futureDate = currentDate.plusDays(7);
+        int currentMonth = currentDate.getMonthValue();
+        int futureMonth = futureDate.getMonthValue();
 
-        if (!generateDate(3, "MM").equals(generateDate(7, "MM"))) {
+
+        if (currentMonth != futureMonth) {
             $(".calendar__arrow_direction_right [data-step='1']").click();
+            String text = String.valueOf(futureDate.getDayOfMonth());
+            $(".calendar__day").shouldHave(Condition.attribute(text));
 
         } else {
 
 
             String nested = $(".calendar__day_state_current").text();
-            int nested1 = Integer.parseInt(nested) + 4;
+            int nested1 = Integer.parseInt(nested) + 7;
             String nested2 = String.valueOf(nested1);
             $(byText(nested2)).click();
 
