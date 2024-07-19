@@ -285,7 +285,7 @@ public class DeliveryCardTest {
         $("[data-test-id='date'] .input__control").click();
 
         LocalDate currentDate = LocalDate.now();
-        LocalDate futureDate = currentDate.plusDays(7);
+        LocalDate futureDate = currentDate.plusDays(14);
         int currentMonth = currentDate.getMonthValue();
         int futureMonth = futureDate.getMonthValue();
         String futureDay = String.valueOf(futureDate.getDayOfMonth());
@@ -310,7 +310,7 @@ public class DeliveryCardTest {
 
 
             String nested = $(".calendar__day_state_current").text();
-            int nested1 = Integer.parseInt(nested) + 7;
+            int nested1 = Integer.parseInt(nested) + 14;
             String nested2 = String.valueOf(nested1);
             $(byText(nested2)).click();
 
