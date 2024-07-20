@@ -283,43 +283,25 @@ public class DeliveryCardTest {
 
         $("[data-test-id='city'] .input__control").sendKeys("Калининград");
         $("[data-test-id='date'] .input__control").click();
-
         LocalDate currentDate = LocalDate.now();
-        LocalDate futureDate = currentDate.plusDays(14);
-        int currentMonth = currentDate.getMonthValue();
-        int futureMonth = futureDate.getMonthValue();
-        String futureDay = String.valueOf(futureDate.getDayOfMonth());
+        LocalDate futureDate = currentDate.plusDays(7);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String futureDateS = futureDate.format(formatter);
 
-
-        if (currentMonth != futureMonth) {
+        if (currentDate.getMonthValue() != futureDate.getMonthValue()) {
             $(".calendar__arrow_direction_right[data-step='1']").click();
-
-
-            var days = $$(".calendar__day");
-            days.find(Condition.text(futureDay)).click();
-            $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
-            $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
-            $("[data-test-id='agreement']").click();
-            $(".button").click();
-            $(byCssSelector("[data-test-id='notification'] .notification__content")).shouldBe(Condition.visible, Duration.ofSeconds(15)).shouldHave(Condition.text(futureDateS));
-
-
-        } else {
-
-
-            String nested = $(".calendar__day_state_current").text();
-            int nested1 = Integer.parseInt(nested) + 14;
-            String nested2 = String.valueOf(nested1);
-            $(byText(nested2)).click();
-
-            $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
-            $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
-            $("[data-test-id='agreement']").click();
-            $(".button").click();
-            $(byCssSelector("[data-test-id='notification'] .notification__content")).shouldBe(Condition.visible, Duration.ofSeconds(15)).shouldHave(Condition.text(nested2));
         }
 
+        String futureDay = String.valueOf(futureDate.getDayOfMonth());
+        $$(".calendar__day").find(Condition.text(futureDay)).click();
+        $("[data-test-id='name'] .input__control").sendKeys("Иван Иванов");
+        $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
+        $("[data-test-id='agreement']").click();
+        $(".button").click();
+        
+        $(byCssSelector("[data-test-id='notification'] .notification__content"))
+                .shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .shouldHave(Condition.text(futureDateS));
     }
 }
+
