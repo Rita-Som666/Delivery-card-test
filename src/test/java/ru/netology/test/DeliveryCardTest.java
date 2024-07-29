@@ -11,18 +11,45 @@ import org.openqa.selenium.Keys;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import com.epam.reportportal.junit5.ReportPortalExtension;
 
+import org.junit.jupiter.api.extension.ExtendWith;
+import java.util.Properties;
+import java.io.InputStream;
+import java.io.IOException;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
+@ExtendWith(ReportPortalExtension.class)
 public class DeliveryCardTest {
+
+
+    private Properties loadProperties() {
+        Properties properties = new Properties();
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("reportportal.properties")) {
+            if (input == null) {
+                System.out.println("Sorry, unable to find reportportal.properties");
+                return null;
+            }
+            properties.load(input);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return properties;
+    }
+
     private String generateDate(long addDays, String pattern) {
         return LocalDate.now().plusDays(addDays).format(DateTimeFormatter.ofPattern(pattern));
     }
 
     @Test
     void shouldSendSuccessAndPositiveValidationDatePlus3() {
+        Properties properties = loadProperties();
+        if (properties != null) {
+            System.out.println("rp.endpoint: " + properties.getProperty("rp.endpoint"));
+        }
+
         open("http://localhost:9999/");
 
 
@@ -298,7 +325,7 @@ public class DeliveryCardTest {
         $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
         $("[data-test-id='agreement']").click();
         $(".button").click();
-        
+
         $(byCssSelector("[data-test-id='notification'] .notification__content"))
                 .shouldBe(Condition.visible, Duration.ofSeconds(15))
                 .shouldHave(Condition.text(futureDateS));
