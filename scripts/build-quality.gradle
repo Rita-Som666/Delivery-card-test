@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.github.spotbugs.snom:spotbugs-gradle-plugin:6.0.18"
+    }
+}
+
+apply plugin: "com.github.spotbugs"
+
+spotbugs {
+    toolVersion = '4.8.6'// Make sure to use the same version as specified in buildscript
+    sourceSets = [sourceSets.main]
+    effort = 'less'
+    reportLevel = com.github.spotbugs.snom.Confidence
+}
+
+tasks.withType(com.github.spotbugs.snom.SpotBugsTask).configureEach {
+    reports {
+        html.required.set(true) // Use set(true) instead of enabled
+        xml.required.set(false) // Use set(false) instead of enabled
+    }
+}
+
+tasks.named("spotbugsMain").configure {
+    reports {
+        html.required.set(true) // Use set(true) instead of enabled
+    }
+}
+
+tasks.named("spotbugsTest").configure {
+    reports {
+        html.required.set(true) // Use set(true) instead of enabled
+    }
+}
