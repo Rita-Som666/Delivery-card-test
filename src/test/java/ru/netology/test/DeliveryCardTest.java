@@ -5,17 +5,23 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import ru.netology.util.ScreenShooterReportPortalExtension;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import org.junit.jupiter.api.extension.ExtendWith;
+import ru.netology.util.ScreenShooterReportPortalExtension;
+import static ru.netology.util.LoggingUtils.logInfo;
 
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
+@ExtendWith({ScreenShooterReportPortalExtension.class})
 public class DeliveryCardTest {
     private String generateDate(long addDays, String pattern) {
         return LocalDate.now().plusDays(addDays).format(DateTimeFormatter.ofPattern(pattern));
