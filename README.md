@@ -18,7 +18,26 @@
 
    Скорее всего это будут логин *superadmin* и пароль *erebus*
 
-6. Добавить в build.gralle
+6.  Зайти в раздел Пользователи в левом меню и создать нового пользователя
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/1cf9a0c1-2625-4482-b203-08df82ba1331">
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/c72c1acc-930d-4bd4-be6f-b71b8ca23627">
+
+
+
+
+7. Зайти в раздел администрировать и создать новый проект
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/a564821b-d393-4936-b16f-fbb9de3d8ee3">
+
+
+8. Назначить созданного пользователя на проект
+
+9. Авторизоваться в качестве недавно созданного пользователя и создать ключ апи
+
+10. Использовать указанный в профиле пример конфигурации для создания ```reportportal.properties```, использовав сгенерированный ключ апи в параметре ```rp.api.key```, а название проекта на который добавлен пользователь в параметре ```rp.project```  
+<img width="1280" alt="image" src="https://github.com/user-attachments/assets/12e3485a-3d51-47f5-9a6b-b82b9dd19656">
+
+
+11. Добавить в build.gralle
 
   ```
 repositories {
@@ -54,5 +73,16 @@ test {
 9. Добавить перед тестовым классом анотацию ```@ExtendWith({ScreenShooterReportPortalExtension.class})```
 
 10. Заустить автотесты используя команду ```./gradlew test```
+
+## Примеры отчёта на ReportPortal
+
+<img width="1280" alt="Снимок экрана 2024-08-09 165548" src="https://github.com/user-attachments/assets/83a5b53b-6041-4c06-83db-8f7114be7e30">
+
+<img width="1280" alt="Снимок экрана 2024-08-09 170329" src="https://github.com/user-attachments/assets/6dc796ec-27dc-48e5-88a1-2e4eb5f03681">
+
+![image](https://github.com/user-attachments/assets/46218d82-0661-47a0-b3d2-6efbd77d1a19)
+
+
+
 
 
