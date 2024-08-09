@@ -6,16 +6,13 @@ import com.codeborne.selenide.SelenideElement;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.Keys;
 import ru.netology.util.ScreenShooterReportPortalExtension;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import org.junit.jupiter.api.extension.ExtendWith;
-import ru.netology.util.ScreenShooterReportPortalExtension;
-import static ru.netology.util.LoggingUtils.logInfo;
 
 
 import static com.codeborne.selenide.Selectors.*;
@@ -304,7 +301,7 @@ public class DeliveryCardTest {
         $("[data-test-id='phone'] .input__control").sendKeys("+79850001122");
         $("[data-test-id='agreement']").click();
         $(".button").click();
-        
+
         $(byCssSelector("[data-test-id='notification'] .notification__content"))
                 .shouldBe(Condition.visible, Duration.ofSeconds(15))
                 .shouldHave(Condition.text(futureDateS));
